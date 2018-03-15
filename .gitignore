@@ -1,7 +1,11 @@
+*.class
+application.properties
+
 target/
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
+
 .apt_generated
 .classpath
 .factorypath
