@@ -1,11 +1,11 @@
-*.class
+
 application.properties
 
 target/
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
-
+.properties
 .apt_generated
 .classpath
 .factorypath
@@ -18,8 +18,9 @@ target/
 *.iws
 *.iml
 *.ipr
-
+*.properties
 ### NetBeans ###
+application.properties
 nbproject/private/
 build/
 nbbuild/
