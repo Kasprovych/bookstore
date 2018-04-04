@@ -25,18 +25,29 @@ public class BootstoreApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
+		User user = new User();
+		user.setUsername("admin");
+		user.setPassword(SecurityUtility.passwordEncoder().encode("admin"));
+		user.setEmail("admin@gmail.com");
+		Set<UserRole> userRoles = new HashSet<>();
+		Role role= new Role();
+		role.setId(0);
+		role.setName("ROLE_ADMIN");
+
 		User user1 = new User();
 		user1.setFirstName("John");
 		user1.setLastName("Adams");
 		user1.setUsername("j");
 		user1.setPassword(SecurityUtility.passwordEncoder().encode("p"));
 		user1.setEmail("JAdams@gmail.com");
-		Set<UserRole> userRoles = new HashSet<>();
+		Set<UserRole> userRoles1 = new HashSet<>();
 		Role role1= new Role();
 		role1.setId(1);
 		role1.setName("ROLE_USER");
-		userRoles.add(new UserRole(user1, role1));
+		userRoles.add(new UserRole(user,role));
+		userRoles1.add(new UserRole(user1, role1));
 		
-		userService.createUser(user1, userRoles);
+		userService.createUser(user, userRoles);
+		userService.createUser(user1, userRoles1);
 	}
 }

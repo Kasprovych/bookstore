@@ -29,6 +29,11 @@ public class BookServiceImpl implements BookService{
 	}
 
 	@Override
+	public List<Book> findAllByAdmin() {
+		return (List<Book>) bookRepository.findAll();
+	}
+
+	@Override
 	public Book findOne(Long id) {
 		return bookRepository.findOne(id);
 	}
@@ -59,6 +64,17 @@ public class BookServiceImpl implements BookService{
 		}
 		
 		return activeBookList;
+	}
+
+	@Override
+	public Book save(Book book) {
+		return bookRepository.save(book);
+	}
+
+	@Override
+	public void removeOne(Long id) {
+		bookRepository.delete(id);
+
 	}
 
 }

@@ -37,6 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			"/js/**",
 			"/image/**",
 			"/",
+			"admin/**",
 			"/newUser",
 			"/forgetPassword",
 			"/fonts/**",
@@ -45,7 +46,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			"/hours",
 			"/faq",
 			"/searchByCategory",
-			"/searchBook"
+			"/searchBook",
+			"/admin/login"
 	};
 	
 	@Override
@@ -58,13 +60,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		http
 			.csrf().disable().cors().disable()
-			.formLogin().failureUrl("/login?error").defaultSuccessUrl("/")
+			.formLogin().failureUrl("/login?error")
 			.loginPage("/login").permitAll()
 			.and()
 			.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 			.logoutSuccessUrl("/?logout").deleteCookies("remember-me").permitAll()
 			.and()
 			.rememberMe();
+
 	}
 	
 	@Autowired
